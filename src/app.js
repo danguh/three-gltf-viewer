@@ -40,7 +40,7 @@ class App {
 
     this.createDropzone();
     this.hideSpinner();
-
+    console.log('----------------')
     const options = this.options;
 
     if (options.kiosk) {

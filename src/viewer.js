@@ -54,6 +54,7 @@ export class Viewer {
     this.el = el;
     this.options = options;
 
+    
     this.lights = [];
     this.content = null;
     this.mixer = null;
@@ -88,6 +89,7 @@ export class Viewer {
     this.prevTime = 0;
 
     this.stats = new Stats();
+    
     this.stats.dom.height = '48px';
     [].forEach.call(this.stats.dom.children, (child) => (child.style.display = ''));
 
@@ -96,6 +98,7 @@ export class Viewer {
     const fov = options.preset === Preset.ASSET_GENERATOR
       ? 0.8 * 180 / Math.PI
       : 60;
+
     this.defaultCamera = new PerspectiveCamera( fov, el.clientWidth / el.clientHeight, 0.01, 1000 );
     this.activeCamera = this.defaultCamera;
     this.scene.add( this.defaultCamera );
@@ -268,11 +271,13 @@ export class Viewer {
     object.position.x += (object.position.x - center.x);
     object.position.y += (object.position.y - center.y);
     object.position.z += (object.position.z - center.z);
+
     this.controls.maxDistance = size * 10;
     this.defaultCamera.near = size / 100;
     this.defaultCamera.far = size * 100;
     this.defaultCamera.updateProjectionMatrix();
 
+    
     if (this.options.cameraPosition) {
 
       this.defaultCamera.position.fromArray( this.options.cameraPosition );

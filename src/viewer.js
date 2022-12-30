@@ -309,7 +309,9 @@ export class Viewer {
 
     this.state.punctualLights = true;
 
+    console.log('this.content', this.content)
     this.content.traverse((node) => {
+      console.log('punctualLight?', node.isLight)
       if (node.isLight) {
         this.state.punctualLights = false;
       } else if (node.isMesh) {

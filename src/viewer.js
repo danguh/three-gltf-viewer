@@ -309,9 +309,7 @@ export class Viewer {
 
     this.state.punctualLights = true;
 
-    console.log('this.content', this.content)
     this.content.traverse((node) => {
-      console.log('punctualLight?', node.isLight)
       if (node.isLight) {
         this.state.punctualLights = false;
       } else if (node.isMesh) {
@@ -691,6 +689,7 @@ export class Viewer {
     if (this.clips.length) {
       this.animFolder.domElement.style.display = '';
       const actionStates = this.state.actionStates = {};
+      
       this.clips.forEach((clip, clipIndex) => {
         clip.name = `${clipIndex + 1}. ${clip.name}`;
 
